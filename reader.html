@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="en" data-theme="dark">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Read a chapter at Aimesig Book Store."><title>Read · Aimesig Book Store</title><link rel="icon" href="assets/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/styles.css"></head>
-<body>
-<header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html"><span class="brand-mark">A</span><span>AIMESIG BOOK STORE</span></a><nav class="nav-actions"><a class="nav-link" href="index.html">Library</a><a class="nav-link" id="readerBackTop" href="index.html">Book details</a><button class="theme-toggle" data-theme-toggle type="button" aria-label="Switch color theme"><span class="theme-icon">☼</span><span class="theme-label">Light mode</span></button></nav></div></header>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Read a chapter at Aimesig Book Store."><meta name="theme-color" content="#11120f"><title>Read — Aimesig Book Store</title><link rel="icon" href="assets/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/styles.css"></head>
+<body class="reader-page">
+<header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html"><span class="brand-mark">A</span><span class="brand-copy"><strong>AIMESIG</strong><small>THE BOOK STORE</small></span></a><nav class="nav-actions" aria-label="Reader navigation"><a class="nav-link" href="index.html">Library</a><a class="nav-link" id="readerBackTop" href="index.html">Book details</a><button class="theme-toggle" data-theme-toggle type="button" aria-label="Switch color theme"><span class="theme-icon">☼</span><span class="theme-label">Light</span></button></nav></div></header>
 <main class="reader-shell">
-  <div class="reader-top"><div><div class="eyebrow" id="readerStatus">AIMESIG READER</div><h1 id="readerTitle">Loading chapter…</h1><div class="reader-meta" id="readerMeta">A quiet place to read.</div></div><a id="readerBookLink" class="button secondary small" href="index.html">← Book details</a></div>
+  <div class="reader-top"><div class="reader-heading"><div class="section-kicker" id="readerStatus">AIMESIG READER / CHAPTER</div><h1 id="readerTitle">Preparing your reading space…</h1><div class="reader-meta" id="readerMeta">A quiet place to read.</div></div><a id="readerBookLink" class="back-pill" href="index.html">← <span>Book details</span></a></div>
+  <div class="reader-progress"><span></span><small id="readerProgressLabel">YOUR READING SPACE</small></div>
   <iframe id="chapterFrame" class="reader-frame" title="Book chapter" sandbox="allow-same-origin"></iframe>
-  <div class="reader-controls"><span class="reader-status" id="readerFootStatus">Enjoy your reading.</span><div style="display:flex;gap:9px"><a id="previousChapter" class="button secondary small" href="#" hidden>← Previous</a><a id="nextChapter" class="button small" href="#" hidden>Next chapter →</a></div></div>
+  <div class="reader-controls"><span class="reader-status" id="readerFootStatus">Read slowly. Think deeply.</span><div class="reader-paging"><a id="previousChapter" class="button secondary small" href="#" hidden>← Previous</a><a id="nextChapter" class="button small" href="#" hidden>Next chapter →</a></div></div>
 </main>
-<footer class="footer"><div class="footer-inner"><span>© AIMESIG BOOK STORE</span><span>Read slowly. Think deeply.</span><a href="index.html">Return to library ↗</a></div></footer>
+<footer class="footer"><div class="footer-inner"><a class="footer-brand" href="index.html">AIMESIG<span>BOOK STORE</span></a><span>READ SLOWLY. THINK DEEPLY.</span><a href="index.html">RETURN TO THE LIBRARY ↗</a><span>© 2026</span></div></footer>
 <script src="assets/catalog.js"></script><script src="assets/app.js"></script><script src="assets/reader.js"></script>
 </body></html>

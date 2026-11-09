@@ -1,38 +1,32 @@
 <!doctype html>
 <html lang="en" data-theme="dark">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Add books and chapters to your Aimesig Book Store library."><title>Add a book · Aimesig Book Store</title><link rel="icon" href="assets/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/styles.css"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Add books, editions and chapters to Aimesig Book Store."><meta name="theme-color" content="#11120f"><title>Add a book — Aimesig Book Store</title><link rel="icon" href="assets/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/styles.css"></head>
 <body>
-<header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html"><span class="brand-mark">A</span><span>AIMESIG BOOK STORE</span></a><nav class="nav-actions"><a class="nav-link" href="index.html">Library</a><a class="nav-link active" href="admin.html">Add a book</a><button class="theme-toggle" data-theme-toggle type="button" aria-label="Switch color theme"><span class="theme-icon">☼</span><span class="theme-label">Light mode</span></button></nav></div></header>
-<main class="container">
-  <section class="page-heading"><div class="eyebrow">Library management</div><h1>Add a book</h1><p>Build a book with a cover, a short introduction, one or more editions, and individual HTML chapters.</p></section>
+<header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html"><span class="brand-mark">A</span><span class="brand-copy"><strong>AIMESIG</strong><small>THE BOOK STORE</small></span></a><nav class="nav-actions" aria-label="Main navigation"><a class="nav-link" href="index.html">The library</a><a class="nav-link active" href="admin.html">Add a book <span class="nav-plus">＋</span></a><button class="theme-toggle" data-theme-toggle type="button" aria-label="Switch color theme"><span class="theme-icon">☼</span><span class="theme-label">Light</span></button></nav></div></header>
+<main class="container admin-main">
+  <section class="admin-intro"><div><div class="section-kicker">02 / LIBRARY MANAGEMENT</div><h1>Make room for<br><em>another story.</em></h1><p>Add a title to your personal shelf. Give it a cover, a short introduction, and one or more editions with their own HTML chapters.</p></div><div class="admin-stamp"><span>YOUR</span><strong>BOOK</strong><span>DESK · 2026</span></div></section>
   <div class="admin-layout">
-    <section class="panel"><h2>Book information</h2>
+    <section class="panel form-panel"><div class="panel-top"><span class="step-number">01</span><div><h2>Book details</h2><p>The information readers will see on the shelf.</p></div></div>
       <form id="bookForm">
-        <div class="field"><label for="bookTitle">Book title *</label><input id="bookTitle" required maxlength="100" placeholder="e.g. The Art of Becoming"></div>
-        <div class="field"><label for="bookAuthor">Author / publisher</label><input id="bookAuthor" maxlength="100" placeholder="e.g. Aimesig Library"></div>
-        <div class="field"><label for="bookDescription">Short description *</label><textarea id="bookDescription" required maxlength="700" placeholder="A short introduction that helps readers discover this book."></textarea></div>
-        <div class="field"><label for="bookCover">Cover image</label><input id="bookCover" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml"><small>PNG, JPG, WEBP or SVG. Maximum 3 MB. A sample cover is used when left blank.</small><img id="coverPreview" class="preview-cover" alt="Selected cover preview"></div>
-        <div id="editionList">
-          <section class="edition-builder" data-edition>
-            <div class="edition-builder-head"><strong>Edition 1</strong></div>
-            <div class="field"><label>Edition name *</label><input data-edition-title required maxlength="100" placeholder="e.g. First Edition"></div>
-            <div class="field"><label>Edition note</label><input data-edition-note maxlength="180" placeholder="Optional note about this edition"></div>
-            <div class="field"><label>Chapter HTML files *</label><input data-chapter-files type="file" accept=".html,.htm,text/html" multiple required><small>Each selected HTML file becomes its own chapter. Choose files in reading order.</small></div>
-          </section>
-        </div>
-        <button class="button secondary small" id="addEdition" type="button">＋ Add another edition</button>
-        <div class="form-actions"><button class="button" type="submit">Add book to my library <span>↗</span></button><a class="button secondary" href="index.html">View library</a></div>
-        <div id="adminStatus" class="status" role="status" aria-live="polite"></div>
+        <div class="field-grid"><div class="field field-wide"><label for="bookTitle">Book title <b>*</b></label><input id="bookTitle" required maxlength="100" placeholder="e.g. The Art of Becoming"></div>
+        <div class="field"><label for="bookAuthor">Author / publisher</label><input id="bookAuthor" maxlength="100" placeholder="Author name"></div>
+        <div class="field"><label for="bookSubtitle">Subtitle <span>OPTIONAL</span></label><input id="bookSubtitle" maxlength="140" placeholder="A line beneath the title"></div></div>
+        <div class="field"><label for="bookDescription">Short description <b>*</b></label><textarea id="bookDescription" required maxlength="700" placeholder="A few thoughtful lines to introduce this book…"></textarea><small>Up to 700 characters. Keep it inviting and concise.</small></div>
+        <div class="field"><label>Cover artwork <span>OPTIONAL</span></label><label class="upload-box" for="bookCover"><span class="upload-icon">＋</span><span><strong>Choose a cover image</strong><small>PNG, JPG, WEBP or SVG · max 3 MB</small></span><span class="upload-action">Browse</span></label><input id="bookCover" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" class="visually-hidden"><img id="coverPreview" class="preview-cover" alt="Selected cover preview"></div>
+        <div class="form-divider"></div>
+        <div class="panel-top edition-panel-top"><span class="step-number">02</span><div><h2>Book editions</h2><p>Each edition can contain multiple chapters.</p></div></div>
+        <div id="editionList"><section class="edition-builder" data-edition><div class="edition-builder-head"><strong>Edition 01</strong><span>FIRST EDITION</span></div><div class="field"><label>Edition name <b>*</b></label><input data-edition-title required maxlength="100" placeholder="e.g. First Edition"></div><div class="field"><label>Edition note <span>OPTIONAL</span></label><input data-edition-note maxlength="180" placeholder="e.g. Original release · 2026"></div><div class="field"><label>Chapter HTML files <b>*</b></label><label class="upload-box chapter-upload"><span class="upload-icon">↥</span><span><strong data-file-label>Choose chapter files</strong><small>HTML or HTM · select in reading order</small></span><span class="upload-action">Browse</span><input data-chapter-files type="file" accept=".html,.htm,text/html" multiple required></label><small>Each selected HTML document becomes its own chapter page.</small></div></section></div>
+        <button class="add-edition" id="addEdition" type="button"><span>＋</span> Add another edition</button>
+        <div class="form-actions"><button class="button" type="submit">Add book to my shelf <span>↗</span></button><a class="button secondary" href="index.html">Cancel</a></div><div id="adminStatus" class="status" role="status" aria-live="polite"></div>
       </form>
     </section>
-    <aside class="panel"><h2>Your library, your way</h2><p class="hint">Books you add here are saved in this browser, and will appear in its library immediately. They stay available on this device after refreshing the page.</p>
-      <div class="notice"><strong>About publishing on GitHub Pages</strong><br>GitHub Pages is static hosting. This form cannot write new files to your GitHub repository, so books added here are private to this browser. To make a book visible to every visitor, add its cover and chapter HTML files to the repository and register it in <code>assets/catalog.js</code>. The README includes a ready-to-copy example.</div>
-      <h2 style="margin-top:25px">Back up your books</h2><p class="hint">Export your local books to a JSON backup. Import that file on another browser to restore the same collection there.</p>
-      <div class="tool-row"><button class="button secondary small" id="exportLibrary" type="button">Export my books ↓</button><label class="button secondary small" for="importLibrary">Import backup ↑</label><input id="importLibrary" type="file" accept="application/json,.json" hidden></div>
-      <div id="localStats" class="stats hint">Loading local library…</div>
+    <aside class="admin-aside">
+      <section class="panel guidance-panel"><div class="section-kicker">A LITTLE GUIDANCE</div><h2>Build your<br><em>own collection.</em></h2><div class="guide-row"><span>01</span><div><strong>One book, many editions</strong><p>Add revised or special editions independently.</p></div></div><div class="guide-row"><span>02</span><div><strong>One HTML file, one chapter</strong><p>Pick chapter files in the order you want readers to follow.</p></div></div><div class="guide-row"><span>03</span><div><strong>Keep a backup</strong><p>Export your shelf before changing devices or browsers.</p></div></div></section>
+      <section class="panel storage-panel"><div class="section-kicker">YOUR PRIVATE SHELF</div><h3>Local library storage</h3><p class="hint">Books added here are saved in this browser and remain after refresh. Use the backup tools to move them to another browser.</p><div id="localStats" class="stats">Checking your shelf…</div><div class="tool-row"><button class="button secondary small" id="exportLibrary" type="button">Export backup ↓</button><label class="button secondary small" for="importLibrary">Restore backup ↑</label><input id="importLibrary" type="file" accept="application/json,.json" hidden></div></section>
+      <div class="publish-note"><span>ⓘ</span><p><strong>Publishing note</strong> GitHub Pages is static hosting. Books added in this form are stored in this browser only. To make them visible to every visitor, publish the book files and catalogue entry to your GitHub repository. See the included README.</p></div>
     </aside>
   </div>
 </main>
-<footer class="footer"><div class="footer-inner"><span>© AIMESIG BOOK STORE</span><a href="index.html">← Back to library</a></div></footer>
+<footer class="footer"><div class="footer-inner"><a class="footer-brand" href="index.html">AIMESIG<span>BOOK STORE</span></a><span>AN OPEN SHELF FOR OPEN MINDS.</span><a href="index.html">← BACK TO THE LIBRARY</a><span>© 2026</span></div></footer>
 <script src="assets/catalog.js"></script><script src="assets/app.js"></script><script src="assets/admin.js"></script>
 </body></html>
