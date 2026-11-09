@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Aimesig Book Store — a considered home for books, ideas and uninterrupted reading.">
+  <meta name="theme-color" content="#0c0d0b"><title>Aimesig Book Store — A quieter kind of library</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="site-header"><div class="nav-wrap">
+  <a class="brand" href="index.html"><span class="brand-mark">A</span><span>AIMESIG BOOK STORE</span></a>
+  <nav class="nav-actions" aria-label="Main navigation"><a class="nav-link active" href="index.html">Library</a><a class="nav-link" href="admin.html">Add a book</a><button class="theme-toggle" data-theme-toggle type="button" aria-label="Switch color theme"><span class="theme-icon">☼</span><span class="theme-label">Light mode</span></button></nav>
+</div></header>
+<main class="container">
+  <section class="hero">
+    <div><div class="eyebrow">A personal library · Read at your own pace</div><h1>Stories worth<br><em>staying with.</em></h1><p class="hero-desc">A thoughtful home for books and ideas. Explore editions, open chapters in a calm reading space, and keep your own collection close.</p><div class="hero-actions"><a class="button" href="#collection">Explore the library <span aria-hidden="true">↘</span></a><a class="button secondary" href="admin.html">Add your book <span aria-hidden="true">＋</span></a></div></div>
+    <div class="hero-art"><img class="hero-cover" src="assets/cover-synvora.svg" alt="SYNVORA — The Hunger Within book cover"></div>
+  </section>
+  <hr class="rule">
+  <section id="collection">
+    <div class="section-head"><div><div class="section-label">The collection</div><h2>Library</h2><p class="section-sub">Choose a book to explore its editions and chapters.</p></div><div class="search-wrap"><label class="sr-only" for="bookSearch">Search books</label><input id="bookSearch" type="search" placeholder="Search title, author or idea…" autocomplete="off"></div></div>
+    <div class="book-grid" id="bookGrid" aria-live="polite"><div class="empty-state">Opening the library…</div></div>
+  </section>
+</main>
+<footer class="footer"><div class="footer-inner"><span>© AIMESIG BOOK STORE</span><span>A small library for big thoughts.</span><a href="admin.html">Library management ↗</a></div></footer>
+<script src="assets/catalog.js"></script><script src="assets/app.js"></script>
+</body></html>
