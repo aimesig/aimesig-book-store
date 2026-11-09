@@ -1,91 +1,126 @@
 # Aimesig Book Store
 
-A static book-store / reading website designed for GitHub Pages. The starter catalogue contains **SYNVORA** and the uploaded **The Hunger Within** chapter.
+A responsive, aesthetic static book library designed for GitHub Pages. The project is preloaded with **SYNVORA — The Hunger Within** as its first book and reading chapter.
 
-## Included features
+## Included and working
 
-- Responsive library page with book cards and search.
-- Separate book details page with editions and chapter links.
-- Each published chapter is a standalone HTML page.
-- Light and dark themes (the selection is remembered in the browser).
-- Add Book form for title, short description, cover image, edition name, and one or more HTML chapter files.
-- Local browser library saved with IndexedDB, plus JSON export/import backup.
+- A book-library homepage with cover cards and live search.
+- Individual book detail pages with editions and chapter lists.
+- A dedicated reader page for every chapter link. Public chapter files are separate HTML documents in the repository.
+- Light and dark themes remembered between visits.
+- Add Book form with title, author, description, cover image, multiple editions, and one or more HTML chapter files per edition.
+- Browser-local book storage using IndexedDB. Local books remain after refreshing the same browser/device.
+- JSON export/import backup for locally added books, including cover images and chapter HTML.
+- Responsive layouts for desktop, tablet, and mobile.
 
 ## Publish on GitHub Pages
 
-1. Create a new GitHub repository, for example `aimesig-book-store`.
-2. Extract this project ZIP and upload **all files and folders inside** `aimesig-book-store/` to the repository root. Keep the folder structure intact.
-3. Commit the files to the `main` branch.
-4. In the repository, open **Settings → Pages**. Under the build/deployment options, choose **Deploy from a branch**, select `main` and the `/ (root)` folder, then save.
-5. Open the Pages URL shown by GitHub after deployment.
+1. Extract this ZIP file.
+2. Open your repository (for example, `https://github.com/aimesig/aimesig-book-store`).
+3. Upload **the contents of the `aimesig-book-store` folder** to the repository root. Do not upload only the ZIP file or the containing folder itself.
+4. Confirm that `index.html`, `book.html`, `reader.html`, `admin.html`, `assets/`, and `books/` are visible at the top level of the repository.
+5. Commit the files to the `main` branch.
+6. Open **Settings → Pages**. Choose **Deploy from a branch**, select `main` and `/(root)`, then Save.
+7. After GitHub finishes building the site, open `https://aimesig.github.io/aimesig-book-store/`.
 
-The project uses relative links, so it works as a GitHub Pages project site under a repository path (not only at a custom domain root).
+The project uses relative paths and works under a GitHub Pages project URL.
 
-## Add a book for all visitors (publish a book)
+## Add books in the website
 
-GitHub Pages serves static files. A web page cannot upload a new file into your GitHub repository by itself, so books added through **Add a book** are saved only in the browser where they were added. To publish a book so everyone can see it:
+Open the **Add a book** page from the navigation. Enter a title and description, choose an optional cover image, add one or more editions, and select the chapter HTML files for each edition. When you submit, the book appears in the library and its chapters open in the reader. Each selected HTML file becomes a separate chapter.
 
-1. Create a folder such as `books/my-book/edition-1/`.
-2. Put the cover image in `assets/` (for example `assets/my-book-cover.jpg`).
-3. Put each chapter in its own HTML file, for example `books/my-book/edition-1/chapter-1.html` and `chapter-2.html`.
-4. Open `assets/catalog.js` and add a new book object to the `window.AIMESIG_BOOKS` array. Use this structure:
+**Important GitHub Pages limitation:** GitHub Pages serves static files; a public website cannot write new files back into its GitHub repository. Therefore, books added through the website are saved in IndexedDB in the browser where they were added. They are not automatically visible to other visitors. Use **Export my books** to back them up or move them to another browser. To publish books for everyone, add the files to the repository and update the public catalogue as described below.
 
-```js
-{
-  id: "my-book",
-  title: "My Book",
-  subtitle: "Optional subtitle",
-  author: "Author name",
-  description: "A short description for the library card and details page.",
-  cover: "assets/my-book-cover.jpg",
-  editions: [
-    {
-      id: "first-edition",
-      title: "First Edition",
-      note: "Optional edition note",
-      chapters: [
-        {
-          id: "chapter-1",
-          number: "01",
-          title: "Chapter One",
-          description: "A short chapter description.",
-          file: "books/my-book/edition-1/chapter-1.html"
-        },
-        {
-          id: "chapter-2",
-          number: "02",
-          title: "Chapter Two",
-          description: "Another short description.",
-          file: "books/my-book/edition-1/chapter-2.html"
-        }
-      ]
-    }
-  ]
-}
+## Publish a book for every visitor
+
+1. Add a cover image under `assets/`, for example `assets/my-book-cover.jpg`.
+2. Add each chapter as an HTML file under a book and edition folder. Example:
+
+   ```text
+   books/my-book/first-edition/chapter-1.html
+   books/my-book/first-edition/chapter-2.html
+   books/my-book/second-edition/chapter-1.html
+   ```
+
+3. Open `assets/catalog.js` and add a book object to `window.AIMESIG_BOOKS`. Use this format:
+
+   ```js
+   {
+     id: "my-book",
+     title: "My Book",
+     subtitle: "Optional subtitle",
+     author: "Author name",
+     description: "A short description shown on the book card and detail page.",
+     cover: "assets/my-book-cover.jpg",
+     editions: [
+       {
+         id: "first-edition",
+         title: "First Edition",
+         note: "Optional edition note",
+         chapters: [
+           {
+             id: "chapter-1",
+             number: "01",
+             title: "Chapter One",
+             description: "A short chapter description.",
+             file: "books/my-book/first-edition/chapter-1.html"
+           },
+           {
+             id: "chapter-2",
+             number: "02",
+             title: "Chapter Two",
+             description: "Another short description.",
+             file: "books/my-book/first-edition/chapter-2.html"
+           }
+         ]
+       },
+       {
+         id: "second-edition",
+         title: "Second Edition",
+         note: "Revised edition",
+         chapters: [
+           {
+             id: "chapter-1",
+             number: "01",
+             title: "Chapter One — Revised",
+             description: "The revised opening chapter.",
+             file: "books/my-book/second-edition/chapter-1.html"
+           }
+         ]
+       }
+     ]
+   }
+   ```
+
+4. Commit the cover, chapter files, and catalogue changes to GitHub. GitHub Pages will then show the new book to every visitor.
+
+Every chapter should be a complete HTML document. The reader loads that HTML into its own reading frame and applies the current light/dark theme. Relative image or stylesheet references inside a chapter are resolved from the chapter file's folder.
+
+## Preview on your computer
+
+Because the reader loads chapter files with `fetch`, use a local web server rather than opening `index.html` directly as a `file://` URL.
+
+- **Windows:** double-click `start-local.bat`.
+- **macOS/Linux:** run `./start-local.sh` in Terminal.
+
+Then open `http://localhost:8000` in your browser.
+
+## Project structure
+
+```text
+index.html                         Library homepage
+book.html                          Book details + editions + chapters
+reader.html                        Dedicated chapter reader
+admin.html                         Add book / editions / chapters
+assets/
+  app.js                           Catalogue, theme, library and detail-page logic
+  admin.js                         Book upload, IndexedDB and backup logic
+  catalog.js                       Public book catalogue
+  reader.js                        Chapter loader and reader theme handling
+  styles.css                       Shared responsive design system
+  cover-synvora.svg                SYNVORA cover artwork
+  cover-default.svg                Generic fallback cover artwork
+  mark.svg                         Site favicon
+books/
+  synvora/edition-1/chapter-1.html  The Hunger Within (uploaded chapter)
 ```
-
-5. Commit and push the new files and catalogue entry. GitHub Pages will publish the updated library.
-
-### Chapter HTML guidance
-
-For published chapters, use a complete HTML document. The included SYNVORA chapter demonstrates an A4 editorial layout and includes the reader theme bar. To reuse the same theme toolbar, responsive overrides, and persistent theme, link the shared reader stylesheet and script using paths relative to your chapter file. For example, from `books/my-book/edition-1/chapter-1.html`:
-
-```html
-<link rel="stylesheet" href="../../../assets/reader.css">
-<script src="../../../assets/reader.js"></script>
-```
-
-Include the reader toolbar block from `books/synvora/edition-1/chapter-1.html` near the beginning of `<body>`, then change its book-details link and chapter label for your chapter.
-
-## Local Add Book form
-
-The Add Book form accepts HTML chapter files. It keeps their content and cover image in the current browser's IndexedDB database. Use **Export my books** to make a backup; use **Import backup** to restore it in another browser. Local additions do not change the public GitHub catalogue.
-
-## Customisation
-
-- Public books and editions: `assets/catalog.js`
-- Main site design: `assets/styles.css`
-- Main site behaviour and local book manager: `assets/app.js`
-- Reader styling: `assets/reader.css`
-- Reader theme button: `assets/reader.js`
-- Starter book: `books/synvora/edition-1/chapter-1.html`
